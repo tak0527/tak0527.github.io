@@ -9,11 +9,6 @@
 		<!-- Add navgoco main js and css files  -->
 		<script type="text/javascript" src="assets/jquery.navgoco.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/jquery.navgoco.css" media="screen" />
-		<script type="text/javascript" id="demo2-javascript">
-		$(document).ready(function() {
-		$("#demo2").navgoco({accordion: true});
-		});
-		</script>
 			</head>
 
     <body>
@@ -138,9 +133,10 @@
 		</ul>
 	</li>
 </ul>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!-- Add JQuery cookie plugin (optional) 
-<script src="assets/jquery.cookie.js"></script>-->
-<!-- Add navgoco main js and css files  -->
-	</body>
+<script type="text/javascript" id="demo2-javascript">
+	$(document).ready(function() {
+	$("#demo2").navgoco({accordion: true});
+	});
+	</script>
+</body>
 </html>
