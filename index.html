@@ -4,8 +4,8 @@
 		<title>tak0527</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<!-- Add JQuery cookie plugin (optional) 
-			<script src="assets/jquery.cookie.js"></script>-->
+		<!-- Add JQuery cookie plugin (optional) -->
+			<script src="assets/jquery.cookie.js"></script>
 		<!-- Add navgoco main js and css files  -->
 		<script type="text/javascript" src="assets/jquery.navgoco.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/jquery.navgoco.css" media="screen" />
@@ -14,7 +14,7 @@
     <body>
 
 <ul id="demo2" class="nav">
-	<li><a href="#">Developer Tools</a></li>
+	<li class="active"><a href="#">ナビゲーション例</a></li>
 	<li><a href="#">Download</a>
 		<ul>
 			<li><a href="#"> Setting Up the ADT Bundle</a></li>
@@ -135,7 +135,37 @@
 </ul>
 <script type="text/javascript" id="demo2-javascript">
 	$(document).ready(function() {
-	$("#demo2").navgoco({accordion: true});
+		active_menu_cb = function(e, submenu) {
+			e.preventDefault();
+			$('#demo2').find('li').removeClass('active');
+			var li =  $(this).parent();
+			var lis = li.parents('li');
+			li.addClass('active');
+			lis.addClass('active');
+		};
+		$('#demo1, #demo2').find("li > a").click(function(e) {
+			e.preventDefault();
+			var isLink = $(this).is("a");
+			var href = isLink ? $(this).attr('href') : '';
+		});
+	$("#demo2").navgoco({
+		caretHtml: '',
+		accordion: false,
+		openClass: 'open',
+		save: true,
+		cookie: {
+			name: 'navgoco',
+			expires: false,
+			path: '/'
+		},
+		slide: {
+			duration: 400,
+			easing: 'swing'
+		},
+		// Add Active class to clicked menu item
+		onClickAfter: active_menu_cb,
+	});
+
 	});
 	</script>
 </body>
